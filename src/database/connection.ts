@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
-var uri = `mongodb+srv://lilamontenegro:lilamontenegro@twinder.aqxjqxj.mongodb.net/twinder_test`;
+var uri =
+  process.env.AMBIENTE == "prod"
+    ? process.env.MONGO_URL_PROD
+    : process.env.MONGO_URL_DEV;
 
 mongoose.connect(uri, {}).then(
   () => {
